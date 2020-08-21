@@ -1,0 +1,21 @@
+.commentItem {
+  background: rgb(245, 245, 245);
+  padding: 10px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.commentItem > .commentItem__main {
+  display: flex;
+}
+
+.commentItem > .commentItem__main > .commentItem__content > h3 {
+  margin: 0;
+  padding-left: 15px;
+}
+
+.commentItem > .commentItem__main > .commentItem__content > p {
+  margin: 0;
+  padding-left: 15px;
+}

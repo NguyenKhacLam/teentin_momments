@@ -1,0 +1,62 @@
+.showDetails {
+  height: 100vh;
+}
+.showDetails__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 6vh;
+}
+.showDetails__content {
+  display: flex;
+  height: 83vh;
+}
+.showDetails__contentImg {
+  flex: 0.6;
+  height: 100%;
+  position: relative;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  background: url("https://img.freepik.com/free-vector/abstract-red-geometric-shapes-background-vector-illustration_1017-18753.jpg?size=626&ext=jpg")
+    no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.showDetails__contentImg > img {
+  height: 100%;
+  z-index: 1;
+}
+.showDetails__contentMain {
+  flex: 0.4;
+}
+.showDetails__contentMain {
+  padding: 0 30px;
+  height: 83vh;
+  overflow-y: scroll;
+}
+.showDetails__contentMain::-webkit-scrollbar {
+  display: none;
+}
+.showDetails__contentMain > h2 {
+  margin: 0;
+}
+
+.showDetails__contentMain > .showDetails__contentMainTimestamp {
+  color: lightgrey;
+  font-size: 0.8rem;
+}
+
+.showDetails__function {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

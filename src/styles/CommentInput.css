@@ -1,0 +1,24 @@
+.commentInput {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.commentInput > form {
+  margin-left: 15px;
+  flex: 0.8;
+}
+
+.commentInput > form > input {
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.commentInput > form > input:focus {
+  outline: none;
+}
+
+.commentInput > form > button {
+  display: none;
+}

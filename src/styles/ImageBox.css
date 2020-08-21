@@ -1,0 +1,14 @@
+.imageBox__item {
+  margin-bottom: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.imageBox__item img {
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.imageBox__item img:hover {
+  transform: scale(1.2);
+}
