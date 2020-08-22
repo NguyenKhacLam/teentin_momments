@@ -1,25 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import "draft-js/dist/Draft.css";
 import "./../styles/Upload.css";
 import { Link } from "react-router-dom";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
-import MUIRichTextEditor from "mui-rte";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 function Upload() {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
   return (
     <div className="upload">
-      <div class="form-style-5">
+      <div className="form-style-5">
         <form>
           <fieldset>
             <legend>
-              <span class="number">1</span> Content
+              <span className="number">1</span> Content
             </legend>
-            <input type="text" name="title" placeholder="Tilte" />
-            <MUIRichTextEditor name="description" label="Start typing..." />
-            {/* <textarea name="description" placeholder="Description"></textarea> */}
+            <input
+              type="text"
+              name="title"
+              placeholder="Tilte"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <CKEditor
+              editor={ClassicEditor}
+              data={description}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setDescription(data);
+              }}
+            />
           </fieldset>
           <fieldset>
             <legend>
-              <span class="number">2</span> Image
+              <span className="number">2</span> Image
             </legend>
             <input type="file" name="file" />
           </fieldset>

@@ -9,3 +9,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.comment__need {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.comment__waiting {
+  display: flex;
+  justify-content: center;
+}

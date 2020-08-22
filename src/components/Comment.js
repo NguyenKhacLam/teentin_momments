@@ -4,16 +4,20 @@ import CommentItem from "./CommentItem";
 import CommentInput from "./CommentInput";
 import db from "./../firebase/firebase";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useStateValue } from "./../context/StateProvider";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function Comment() {
   const [comments, setComments] = useState([]);
   const { imageId } = useParams();
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     db.collection("posts")
       .doc(imageId)
       .collection("comments")
-      .orderBy("timestamp")
+      .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
         setComments(snapshot.docs.map((doc) => doc.data()));
       });
@@ -27,18 +31,31 @@ function Comment() {
         <h2>Comments</h2>
         <p>{comments.length} comments</p>
       </div>
-      <CommentInput />
-      {comments.map(({ userImage, username, comment, timestamp }) => (
-        <>
-          <CommentItem
-            userImage={userImage}
-            username={username}
-            comment={comment}
-            timestamp={timestamp}
-          />
-          <br />
-        </>
-      ))}
+      {user ? (
+        <CommentInput />
+      ) : (
+        <h2 className="comment__need">
+          Bạn cần <Link to="/login">đăng nhập</Link> để bình luận
+        </h2>
+      )}
+      {comments.length == 0 ? (
+        <div className="comment__waiting">
+          <CircularProgress />
+        </div>
+      ) : (
+        comments.map(({ userImage, username, comment, timestamp }) => (
+          <>
+            <CommentItem
+              userImage={userImage}
+              username={username}
+              comment={comment}
+              timestamp={timestamp}
+            />
+            <br />
+          </>
+        ))
+      )}
+      {/* {} */}
     </div>
   );
 }
